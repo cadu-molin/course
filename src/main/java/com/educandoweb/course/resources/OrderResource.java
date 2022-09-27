@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/orders")
+public class OrderResource {
 
     @Autowired
-    OrderService orderService;
+    OrderService userService;
 
     @GetMapping
     public ResponseEntity<List<Order>> findAll() {
-        return ResponseEntity.ok().body(orderService.findAll());
+        return ResponseEntity.ok().body(userService.findAll());
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Order> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(orderService.findById(id));
+        return ResponseEntity.ok().body(userService.findById(id));
     }
 }

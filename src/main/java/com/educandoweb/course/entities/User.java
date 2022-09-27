@@ -1,5 +1,6 @@
 package com.educandoweb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable {
@@ -24,8 +22,20 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
+
+    public User() {
+    }
+
+    public User(Integer id, String nome, String email, String phone, String password) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
 
     @Override
     public boolean equals(Object o) {
