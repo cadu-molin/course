@@ -16,7 +16,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String nome;
     private String email;
     private String phone;
@@ -29,7 +29,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String nome, String email, String phone, String password) {
+    public User(Long id, String nome, String email, String phone, String password) {
         this.id = id;
         this.nome = nome;
         this.email = email;
